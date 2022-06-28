@@ -56,7 +56,7 @@ namespace NZWalks.API.Controllers
         {
             var region = await regionRepository.GetAsync(id);
 
-            if(region == null)
+            if (region == null)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace NZWalks.API.Controllers
             // Get region from database
             var region = await regionRepository.DeleteAsync(id);
             // If null NotFound
-            if(region == null)
+            if (region == null)
             {
                 return NotFound();
             }
@@ -130,7 +130,7 @@ namespace NZWalks.API.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] Models.DTO.UpdateRegionRequest updateRegionRequest )
+        public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] Models.DTO.UpdateRegionRequest updateRegionRequest)
         {
             // Convert DTO to Domain model
             var region = new Models.Domain.Region()
@@ -146,7 +146,7 @@ namespace NZWalks.API.Controllers
             region = await regionRepository.UpdateAsync(id, region);
 
             // If Null Then NotFound
-            if(region == null)
+            if (region == null)
             {
                 return NotFound();
             }
@@ -163,5 +163,6 @@ namespace NZWalks.API.Controllers
             };
             // Return Ok response
             return Ok(regionDTO);
+        }
     }
-    }
+}
